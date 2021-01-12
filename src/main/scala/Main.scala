@@ -10,6 +10,7 @@ object Main {
   }
   def main(args: Array[String]): Unit = {
     println(Hello.greeting());
+    println()
 
   val filename = "entree.txt"
     var input =  Entree(filename)

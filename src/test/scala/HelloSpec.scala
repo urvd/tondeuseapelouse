@@ -12,5 +12,4 @@ class HelloSpec extends AnyFunSuite {
   ) {
     assertThrows[java.lang.StringIndexOutOfBoundsException](Hello.greeting()(13))
   }
-
 }

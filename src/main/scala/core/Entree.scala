@@ -1,6 +1,6 @@
 package core
 
-import core.components.{Component, Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components.{Component, ComponentImpl, Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
 
 import scala.annotation.tailrec
 import scala.io.Source
@@ -19,12 +19,12 @@ class EntryPoints(var list: List[Component]) {
     case ti:TondeuseInstruction => list = ti::list
   }
 
-  def search(index: Int): Component = {
-    var component:Component = ???
-    for (a <- list if(a == list.take(index).head)) yield a match {
-      case p:Pelouse => component = p
-      case tc:TondeuseCoordonnee => component = tc
-      case ti:TondeuseInstruction => component = ti
+  def search(index: Int): ComponentImpl = {
+    var component = new ComponentImpl()
+    for (a <- list if(a == list.lift(index).get)) yield a match {
+      case p:Pelouse => component = p.copy()
+      case tc:TondeuseCoordonnee => component = tc.copy()
+      case ti:TondeuseInstruction => component = ti.copy()
     }
     component
   }
@@ -48,7 +48,8 @@ class Entree(filename: String) {
           if (acc == 0) {
             try {
               valid.pelouseEntries(line, acc)
-              val ep_pelouse = new Pelouse(line.charAt(0).toInt, line.charAt(2).toInt)
+              val ep_pelouse = new Pelouse(Integer.parseInt(line.charAt(0).toString),
+                Integer.parseInt(line.charAt(2).toString))
               entries.add(ep_pelouse)
             } catch {
               case e: DonneesIncorrectesException[Pelouse] => throw e

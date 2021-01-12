@@ -21,10 +21,15 @@ class DonneesIncorrectesExceptionValidation {
       if (string.length() != 3) {
         throw new DonneesIncorrectesException[Pelouse](ErrorConst.ERROR_Pelouse_lenght)
       } else {
-        if (!string.charAt(0).toInt.isInstanceOf[Int]) {
+        var verif1:Int = string.charAt(0).toInt
+        var verif2:Int = string.charAt(2).toInt
+        if (verif1 == 47 && verif2 == 47) {
+          throw new DonneesIncorrectesException[Pelouse](ErrorConst.ERROR_Pelouse_sans_taille)
+        }
+        if (verif1 <= 47 || verif1>=57) {
           throw new DonneesIncorrectesException[Pelouse](ErrorConst.ERROR_Pelouse_type_value(0))
         }
-        if (!string.charAt(2).toInt.isInstanceOf[Int]) {
+        if (verif2 <= 47 || verif2 >= 57) {
           throw new DonneesIncorrectesException[Pelouse](ErrorConst.ERROR_Pelouse_type_value(2))
         }
       }
@@ -38,24 +43,29 @@ class DonneesIncorrectesExceptionValidation {
         if(string.length() != 5){
           throw new DonneesIncorrectesException(ErrorConst.ERROR_Pelouse_lenght)
         }else{
-          if(!string.charAt(0).toInt.isInstanceOf[Int]) {
+          var verif1:Int = string.charAt(0).toInt
+          var verif2:Int = string.charAt(2).toInt
+          if(verif1 <= 47 && verif1 >= 57) {
             throw new DonneesIncorrectesException(ErrorConst.ERROR_Tondeuse_coord_type_value(0))
           }
-          if(!string.charAt(2).toInt.isInstanceOf[Int]) {
+          if(verif2 <= 47 && verif2 >= 57) {
             throw new DonneesIncorrectesException(ErrorConst.ERROR_Tondeuse_coord_type_value(2))
           }
-          if(!string.charAt(4).toInt.isInstanceOf[Int]) {
+          var verif3 = (string.charAt(4).equals('N') || string.charAt(4).equals('S') || string.charAt(4).equals('E')
+            || string.charAt(4).equals('O'))
+          if(!verif3) {
             throw new DonneesIncorrectesException(ErrorConst.ERROR_Tondeuse_coord_type_value(4))
           }
         }
       }
     }
+
     @throws(classOf[DonneesIncorrectesException[TondeuseInstruction]])
     def tondeuseInstructionEntries(string: String, emplacement: Int) {
       if (emplacement % 2 != 0) {
         throw new DonneesIncorrectesException(ErrorConst.ERROR_Tondeuse_instruction_emplacement)
       } else {
-        if (!(string.contains('A') || string.contains('D') || string.contains('G'))) {
+        for(a <- string.toList if(!(a.equals('A') || a.equals('D') || a.equals('G'))) ){
           throw new DonneesIncorrectesException(ErrorConst.ERROR_Tondeuse_instruction_type_value)
         }
       }
@@ -88,20 +98,19 @@ object ErrorConst {
     }
     ERROR_Pelouse + "La "+ nieme + " donnée n'est pas entiere."
   }
+  var ERROR_Pelouse_sans_taille = ERROR_Pelouse + "une pelouse de taille (0,0) n'est pas possible"
   // Error msg d'entrée tondeuse coordonnée/instruction
   def ERROR_Tondeuse_coord_emplacement: String = ERROR_Tondeuse_coord +  "élément mal placé."
   def ERROR_Tondeuse_instruction_emplacement: String = ERROR_Tondeuse_instruction +  "élément mal placé."
   var ERROR_Tondeuse_coord_lenght: String = ERROR_Tondeuse_coord +  "La Syntax ne respecte pas \'1 2 N\'."
   def ERROR_Tondeuse_coord_type_value(value: Int): String = {
-    var nieme: String = value match {
-      case 0 => "premiere"
-      case 2 => "seconde"
-      case 4 => "troisieme"
+    var resultError: String = value match {
+      case 0 => ERROR_Tondeuse_coord + "La coordonnéé x (premiere donnée)  n'est pas une chaine de charactere."
+      case 2 => ERROR_Tondeuse_coord + "La coordonnéé y (seconde donnée) n'est pas une chaine de charactere."
+      case 4 => ERROR_Tondeuse_coord + "La troisieme donnée n'est pas entiere ou ne correspond pas a une " +
+        "direction."
       case  _=> ""
     }
-    var resultError: String = ""
-    if(value == 3) resultError =ERROR_Tondeuse_coord + "La "+ nieme + " donnée n'est pas une chaine de charactere."
-    else resultError = ERROR_Tondeuse_coord + "La "+ nieme + " donnée n'est pas entiere."
     resultError
   }
 
