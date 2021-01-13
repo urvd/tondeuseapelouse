@@ -1,7 +1,8 @@
 package lecture_specs
 
 import core.components.{Component, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
-import core.{DonneesIncorrectesException, Entree, EntryPoints}
+import core.exception.DonneesIncorrectesException
+import core.entree.{Entree, EntryPoints}
 import org.scalatest.funsuite.AnyFunSuite
 
 class LireDonneeEntreeTest extends AnyFunSuite {
@@ -16,8 +17,15 @@ class LireDonneeEntreeTest extends AnyFunSuite {
     var entries: EntryPoints = input.lecture()
 
     //then
-    assert(entries.list.length == 5)
-    assertResult(p)(entries.search(4))
+    var tcs = entries.tondeusesDebut.reverse
+    var tis = entries.instructions.reverse
+    assert(tis.length == 2 && tcs.length == 2)
+    assertResult(p)(entries.searchP())
+
+    assertResult(tcs.lift(0).get)(entries.searchTC(1))
+    assertResult(tcs.lift(1).get)(entries.searchTC(0))
+    assertResult(tis.lift(0).get)(entries.searchTI(1))
+    assertResult(tis.lift(1).get)(entries.searchTI(0))
   }
 
   test("on ne recupere pas les données d'entree car elle sont vide") { //marche
