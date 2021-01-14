@@ -8,7 +8,7 @@ package object model {
   case class Mission(limite: Point, tondeuses: Tondeuses) extends Serializable{
 //    //def this(limite: Point, tondeuses: Tondeuses) = this(limite, tondeuses)
     override def toString: String = {
-       "{\"limite\" :" + limite + ",\n" + "\"tondeuses\" :" + tondeuses.toString + "}"
+       "{\"limite\":" + limite + "," + "\"tondeuses\":" + tondeuses.toString + "}"
     }
   }
 
@@ -26,19 +26,19 @@ package object model {
   }
   case class Tondeuse(debut:Position, instruction: Instruction, fin:Position) extends Serializable{
     override def toString: String = {
-      "{\"debut\" :" + debut.toString + "," + "\"instruction\" :" + instruction.toString + "," +
-        "\"fin\" :" + fin.toString + "}"
+      "{\"debut\":" + debut.toString + "," + "\"instruction\":" + instruction.toString + "," +
+        "\"fin\":" + fin.toString + "}"
     }
   }
   case class Position(point: Point, direction: String) extends Serializable{
     override def toString: String = {
-      "{\"point\" :" + point.toString + "," +
-        "\"direction\" :" + "\"" + direction + "\"" + "}"
+      "{\"point\":" + point.toString + "," +
+        "\"direction\":" + "\"" + direction + "\"" + "}"
     }
   }
   case class Instruction(array: Array[Char]) extends Serializable{
     override def toString: String = {
-      var str = "\n["
+      var str = "["
       for(i <- 0 to array.length - 1){
         if(array.length - 1 == i){
           str = str + "\"" + array(i) + "\""
@@ -49,7 +49,7 @@ package object model {
   }
   case class Point(x: Int, y: Int) extends Serializable{
     override def toString: String = {
-      "{\"x\" :" + x + "," + "\"y\" :" +  y  + "}"
+      "{\"x\":" + x + "," + "\"y\":" +  y  + "}"
     }
   }
 }

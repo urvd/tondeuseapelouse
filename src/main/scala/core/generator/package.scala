@@ -3,8 +3,8 @@ package core
 import core.json_maker._
 import core.model.{Tondeuses, _}
 
+ // Not Impl
 package object generator {
-
   object Mission {
     //def apply(limite: Point, tondeuses: Tondeuses):Mission = new Mission(limite, tondeuses)
     implicit def writesMission():Writes[Mission] = new Writes[Mission]() {

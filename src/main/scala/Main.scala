@@ -14,17 +14,19 @@ object Main {
     println(Hello.greeting() + "\n");
 
     val file_root = "src/ressources/main/"
-    println("# Lu en entrée:\n")
+    println("# Lu en entrée depuis (\".src/ressources/main/entree.txt\":\n")
     val filename_entree = file_root + "entree.txt"
 
     var input =  Entree(filename_entree)
     var entries: EntryPoints = input.lecture()
 
-    println("\n# Générer en sortie:")
+
+    println("\n# Resultat final traiter:")
     var output = Sortie(entries)
     var end_result = output.traitement()
     end_result.show()
 
+    println("\n# Générer en sortie vers (\".src/ressources/main/result.json\":")
     JsonGenerator.generate(entries,end_result)
 
 

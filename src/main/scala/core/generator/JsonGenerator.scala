@@ -42,14 +42,11 @@ object JsonGenerator {
       }
     }
     var result = new Mission(limite, new Tondeuses(tondeuses))
-    //print(result.toString())
     val json: JsValue = Json.parse(result.toString)
-    //val json2: JsValue = Json.obj(result)
     val writer = new PrintWriter(new File(filename))
-
     writer.write(json.toString())
     writer.close()
     //Source.fromFile().
-    //println(json)
+    //println("Resultat obtenu\n" + result.toString)
   }
 }

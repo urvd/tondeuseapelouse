@@ -2,6 +2,7 @@ package core
 
 import core.json_maker.JsValue
 
+//Not used
 package object json_maker {
 
   class JsValue(value: Any){
