@@ -1,12 +1,17 @@
 package core
 
-import core.components.{TondeuseCoordonnee, TondeuseInstruction}
 import core.entree.EntryPoints
 import core.traitement.Traitement
+import  core.components._
+
+import scala.annotation.tailrec
 
 package object sortie {
   object Sortie {
     def apply(entryPoints: EntryPoints): Sortie = new Sortie(entryPoints)
+    def reponse(entryPoints: EntryPoints):EndPoint = {
+      new Sortie(entryPoints).traitement()
+    }
   }
 
   class Sortie(entryPoints: EntryPoints){
@@ -15,6 +20,7 @@ package object sortie {
       var instructions = entryPoints.instructions.reverse
       var tondeuses = entryPoints.tondeusesDebut.reverse
 
+      @tailrec
       def helperRec(tondeusesI: List[TondeuseInstruction], tondeusesC: List[TondeuseCoordonnee],
                     add_tondeuses_final: List[TondeuseCoordonnee]): List[TondeuseCoordonnee] = (tondeusesI,tondeusesC) match {
         case (Nil, Nil) => {

@@ -1,4 +1,4 @@
-import core.components.{Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components._
 import core.entree.EntryPoints
 import core.sortie.EndPoint
 import play.api.libs.json.Json

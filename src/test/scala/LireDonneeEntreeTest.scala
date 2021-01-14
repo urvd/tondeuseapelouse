@@ -1,4 +1,4 @@
-import core.components.{Component, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components._
 import core.entree.{Entree, EntryPoints}
 import core.exception.DonneesIncorrectesException
 import org.scalatest.funsuite.AnyFunSuite

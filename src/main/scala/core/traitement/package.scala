@@ -1,7 +1,6 @@
 package core
 
-import core.components.{Coordonnee, TondeuseCoordonnee}
-
+import core.components._
 import scala.annotation.tailrec
 
 package object traitement {

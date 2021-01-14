@@ -1,6 +1,6 @@
 package core
 
-import core.components.{Component, Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components._
 import core.exception.{DonneesIncorrectesException, DonneesIncorrectesExceptionValidation}
 
 import scala.io.Source
@@ -9,6 +9,10 @@ package object entree {
 
   object Entree {
     def apply(filename: String): Entree = new Entree(filename)
+
+    def read(filename: String): EntryPoints = {
+      new Entree(filename).lecture()
+    }
   }
 
   class Entree(filename: String) {

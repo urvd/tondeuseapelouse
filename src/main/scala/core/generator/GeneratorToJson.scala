@@ -12,7 +12,7 @@ import play.api.libs.json.{JsValue, Json}
 import scala.+:
 import scala.io.Source
 
-object JsonGenerator {
+object GeneratorToJson {
   def generate(inputs: EntryPoints, outputs: EndPoint, filename: String = "src/ressources/main/result.json"): Unit = {
     var tondeuses = Array[Tondeuse]()
     var limiteP = inputs.pelouse.lift(0).get

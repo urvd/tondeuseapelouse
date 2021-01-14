@@ -1,4 +1,4 @@
-import core.components.{Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components._
 import core.entree.EntryPoints
 import core.sortie.{EndPoint, Sortie}
 import mock_data.MockedData.{ENDPOINT_MOCK, ENTRYPOINT_MOCK}

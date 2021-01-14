@@ -6,7 +6,6 @@ import core.json_maker.JsValue
 package object json_maker {
 
   class JsValue(value: Any){
-    //override def toString: String = ???
   }
   case class JsNumber(value:BigDecimal) extends JsValue {
     override def toString: String = {

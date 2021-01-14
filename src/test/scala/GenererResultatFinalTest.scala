@@ -1,10 +1,8 @@
-import core.components.{Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components._
 import core.entree.EntryPoints
-import core.generator.JsonGenerator
-import core.sortie.{EndPoint, Sortie}
-import mock_data.MockedData.{ENDPOINT_MOCK, ENTRYPOINT_MOCK, JSON_Result_MOCK}
+import core.generator.GeneratorToJson
+import core.sortie.EndPoint
 import org.scalatest.funsuite.AnyFunSuite
-import play.api.libs.json.Json
 
 import scala.io.Source
 import scala.reflect.io.File
@@ -34,7 +32,7 @@ class GenererResultatFinalTest extends  AnyFunSuite {
     var output = ENDPOINT_MOCK
 
     //when
-    JsonGenerator.generate(inputs, output, filename = FILENAME_RESULT)
+    GeneratorToJson.generate(inputs, output, filename = FILENAME_RESULT)
     //then
 
     assert(File(FILENAME_RESULT).exists)

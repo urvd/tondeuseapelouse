@@ -1,7 +1,6 @@
 package core.entree
 
 import core.components._
-import core.exception.{DonneesIncorrectesException, DonneesIncorrectesExceptionValidation}
 
 import scala.io.Source
 

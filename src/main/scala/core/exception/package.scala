@@ -1,6 +1,6 @@
 package core
 
-import core.components.{ComponentImpl, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
+import core.components._
 
 package object exception {
   class DonneesIncorrectesException[A](s:String) extends Exception(s)

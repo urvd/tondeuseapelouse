@@ -1,6 +1,6 @@
 import core.entree.{Entree, EntryPoints}
-import core.generator.JsonGenerator
-import core.sortie.Sortie
+import core.generator.GeneratorToJson
+import core.sortie.{EndPoint, Sortie}
 import sun.security.util.Length
 
 import scala.annotation.tailrec
@@ -17,17 +17,14 @@ object Main {
     println("# Lu en entrée depuis (\".src/ressources/main/entree.txt\":\n")
     val filename_entree = file_root + "entree.txt"
 
-    var input =  Entree(filename_entree)
-    var entries: EntryPoints = input.lecture()
-
+    var entries: EntryPoints =  Entree.read(filename_entree)
 
     println("\n# Resultat final traiter:")
-    var output = Sortie(entries)
-    var end_result = output.traitement()
+    var end_result: EndPoint = Sortie.reponse(entries)
     end_result.show()
 
     println("\n# Générer en sortie vers (\".src/ressources/main/result.json\":")
-    JsonGenerator.generate(entries,end_result)
+    GeneratorToJson.generate(entries,end_result)
 
 
   }
