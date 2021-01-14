@@ -1,12 +1,10 @@
-package lecture_specs
-
 import core.components.{Coordonnee, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
 import core.entree.EntryPoints
 import core.sortie.Sortie
 import org.scalatest.funsuite.AnyFunSuite
 
 class TraiterDonneeSortieTest extends  AnyFunSuite{
-  test("on obtient les nouvelles positions des instructions") { //marche
+  test("on obtient les nouvelles positions a partir des instructions et postions de départ") { //marche
     //given
     var pelouse = new Pelouse(5,5)
     var tondeuses = List(new TondeuseCoordonnee(new Coordonnee(3,3),'E'),

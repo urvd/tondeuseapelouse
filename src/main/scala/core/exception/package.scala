@@ -3,6 +3,8 @@ package core
 import core.components.{ComponentImpl, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
 
 package object exception {
+  class DonneesIncorrectesException[A](s:String) extends Exception(s)
+
   class DonneesIncorrectesExceptionValidation {
     @throws(classOf[DonneesIncorrectesException[ComponentImpl]])
     def globalEntries(entrieslines: Int): Unit = {

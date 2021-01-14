@@ -1,4 +1,5 @@
 import core.entree.{Entree, EntryPoints}
+import core.generator.JsonGenerator
 import core.sortie.Sortie
 import sun.security.util.Length
 
@@ -24,6 +25,7 @@ object Main {
     var end_result = output.traitement()
     end_result.show()
 
+    JsonGenerator.generate(entries,end_result)
 
 
   }

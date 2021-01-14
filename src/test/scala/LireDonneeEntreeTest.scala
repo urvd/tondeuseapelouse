@@ -1,8 +1,6 @@
-package lecture_specs
-
 import core.components.{Component, Pelouse, TondeuseCoordonnee, TondeuseInstruction}
-import core.exception.DonneesIncorrectesException
 import core.entree.{Entree, EntryPoints}
+import core.exception.DonneesIncorrectesException
 import org.scalatest.funsuite.AnyFunSuite
 
 class LireDonneeEntreeTest extends AnyFunSuite {
