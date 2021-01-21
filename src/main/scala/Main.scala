@@ -30,9 +30,3 @@ object Main {
   }
 
 }
-
-//TODO: Lire via fichier de conf les données d'entrée. = \-\-\-\
-//TODO: Impl structure de la tondeuse et pelouse. = \-\-\-\
-//TODO: traitement et algo de deplacement de la tondeuse. = \-\-\-\
-//TODO: Impl la structure de sortie en json.
-//TODO: TU régulier. = \-\-\ \
