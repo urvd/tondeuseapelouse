@@ -9,7 +9,7 @@
  - heritage/polymorphisme
  
 # Description de la structure projet
-  - On lit les données à partir d'un fichier "entree.txt" placée dans "src/ressources/main".
-   Le dossier "src/ressources/test" sert pour les tests unitaires.
-  - 
+  - On lit les données à partir d'un fichier "src/ressources/main/entree.txt" placée dans "src/ressources/main".
+  - Le dossier "src/ressources/test" sert pour les tests unitaires.
+  - On lit le resultat obtenu dans "src/ressources/main/result.json".
   
